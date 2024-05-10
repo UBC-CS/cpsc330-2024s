@@ -1,124 +1,52 @@
+import pandas as pd
+import numpy as np
 import re
+from sklearn.model_selection import cross_val_score, cross_validate, train_test_split
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, export_graphviz, plot_tree
+
+import glob
 
 # visualization
 import graphviz
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import torch
 from imageio import imread
-from sklearn.model_selection import cross_validate
-from sklearn.tree import export_graphviz
-from torchvision import transforms
-from torchvision.models import vgg16, VGG16_Weights
 
 plt.rcParams["font.size"] = 16
 
+# Custom function to customize the tree plot and hide values and samples
+def custom_plot_tree(tree_model, feature_names=None, class_names=None, **kwargs):
+    """
+    Customizes and displays a tree plot for a scikit-learn Decision Tree Classifier.
 
-def classify_image(img, topn=4):
+    Parameters:
+    - tree (sklearn.tree.DecisionTreeClassifier): The trained Decision Tree Classifier to visualize.
+    - width: width of the matplotlib plot in inches 
+    - height: height of the matplotlib plot in inches 
+    - feature_names (list or None): A list of feature names to label the tree nodes with feature names.
+                                    If None, generic feature names will be used.
+    - class_names (list or None): A list of class names to label the tree nodes with class names.
+                                  If None, generic class names will be used.
+    - **kwargs: Additional keyword arguments to be passed to the `sklearn.tree.plot_tree` function.
 
-    clf = vgg16(pretrained=True)
-    preprocess = transforms.Compose(
-        [
-            transforms.Resize(299),
-            transforms.CenterCrop(299),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-        ]
-    )
-
-    with open("data/imagenet_classes.txt") as f:
-        classes = [line.strip() for line in f.readlines()]
-
-    img_t = preprocess(img)
-    batch_t = torch.unsqueeze(img_t, 0)
-    clf.eval()
-    output = clf(batch_t)
-    _, indices = torch.sort(output, descending=True)
-    probabilities = torch.nn.functional.softmax(output, dim=1)
-    d = {
-        "Class": [classes[idx] for idx in indices[0][:topn]],
-        "Probability score": [
-            np.round(probabilities[0, idx].item(), 3) for idx in indices[0][:topn]
-        ],
-    }
-    df = pd.DataFrame(d, columns=["Class", "Probability score"])
-    return df
-
-def classify_image_recent(img, topn=4):
-
-    clf = vgg16(
-        weights=VGG16_Weights.IMAGENET1K_V1
-    )
-    preprocess = transforms.Compose(
-        [
-            transforms.Resize(299),
-            transforms.CenterCrop(299),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-        ]
-    )
-
-    with open("data/imagenet_classes.txt") as f:
-        classes = [line.strip() for line in f.readlines()]
-
-    img_t = preprocess(img)
-    batch_t = torch.unsqueeze(img_t, 0)
-    clf.eval()
-    output = clf(batch_t)
-    _, indices = torch.sort(output, descending=True)
-    probabilities = torch.nn.functional.softmax(output, dim=1)
-    d = {
-        "Class": [classes[idx] for idx in indices[0][:topn]],
-        "Probability score": [
-            np.round(probabilities[0, idx].item(), 3) for idx in indices[0][:topn]
-        ],
-    }
-    df = pd.DataFrame(d, columns=["Class", "Probability score"])
-    return df
-
-def display_tree(feature_names, tree, counts=False):
-    """For binary classification only"""
-    dot = export_graphviz(
-        tree,
-        out_file=None,
-        feature_names=feature_names,
-        class_names=tree.classes_.astype(str),
-        impurity=False,
-    )
-    # adapted from https://stackoverflow.com/questions/44821349/python-graphviz-remove-legend-on-nodes-of-decisiontreeclassifier
-    # dot = re.sub('(\\\\nsamples = [0-9]+)(\\\\nvalue = \[[0-9]+, [0-9]+\])(\\\\nclass = [A-Za-z0-9]+)', '', dot)
-
-    if counts:
-        dot = re.sub("(samples = [0-9]+)\\\\n", "", dot)
-        dot = re.sub("value", "counts", dot)
-    else:
-        dot = re.sub("(\\\\nsamples = [0-9]+)(\\\\nvalue = \[[0-9]+, [0-9]+\])", "", dot)
-        dot = re.sub("(samples = [0-9]+)(\\\\nvalue = \[[0-9]+, [0-9]+\])\\\\n", "", dot)
-
-    return graphviz.Source(dot)
-
-
-def tree_image(feature_names, tree):
-    """For binary classification only"""
-    dot = export_graphviz(
-        tree,
-        out_file=None,
-        feature_names=feature_names,
-        class_names=tree.classes_.astype(str),
-        impurity=False,
-    )
-    # adapted from https://stackoverflow.com/questions/44821349/python-graphviz-remove-legend-on-nodes-of-decisiontreeclassifier
-    # dot = re.sub('(\\\\nsamples = [0-9]+)(\\\\nvalue = \[[0-9]+, [0-9]+\])(\\\\nclass = [A-Za-z0-9]+)', '', dot)
-    # dot = re.sub("(\\\\nsamples = [0-9]+)(\\\\nvalue = \[[0-9]+, [0-9]+\])", "", dot)
-    # dot = re.sub("(samples = [0-9]+)(\\\\nvalue = \[[0-9]+, [0-9]+\])\\\\n", "", dot)
-    dot = re.sub("(samples = [0-9]+)\\\\n", "", dot)
-    dot = re.sub("value", "counts", dot)
-    graph = graphviz.Source(dot, format="png")
-    fout = "tmp"
-    graph.render(fout)
-    return imread(fout + ".png")
-
+    Returns:
+    - None: The function displays the customized tree plot using Matplotlib.
+    
+    This function customizes the appearance of a Decision Tree plot generated by the scikit-learn
+    `plot_tree` function. It hides both the samples and values in each node of the tree plot
+    for improved visualization.
+    """    
+    plot_tree(tree_model, 
+              feature_names=feature_names, 
+              class_names=class_names, 
+              filled=True, 
+              **kwargs)
+    
+    # Customize the appearance of the text elements for each node
+    for text in plt.gca().texts:
+        new_text = re.sub('samples = \d+\n', '', text.get_text()) # Hide samples
+        text.set_text(new_text) 
+    
+    plt.show()
 
 def cross_validate_std(*args, **kwargs):
     """Like cross_validate, except also gives the standard deviation of the score"""
@@ -129,7 +57,6 @@ def cross_validate_std(*args, **kwargs):
     if "train_score" in res:
         res_mean["std_train_score"] = res["train_score"].std()
     return res_mean
-
 
 def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
     """
@@ -156,6 +83,6 @@ def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
     out_col = []
 
     for i in range(len(mean_scores)):
-        out_col.append((f"%0.3f (+/- %0.3f)" % (mean_scores[i], std_scores[i])))
+        out_col.append((f"%0.3f (+/- %0.3f)" % (mean_scores.iloc[i], std_scores.iloc[i])))
 
     return pd.Series(data=out_col, index=mean_scores.index)

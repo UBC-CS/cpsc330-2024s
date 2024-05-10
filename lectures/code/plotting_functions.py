@@ -1,6 +1,7 @@
 from utils import *
+from mglearn_utils import *
 import matplotlib.pyplot as plt
-import mglearn
+import mglearn_utils as mglearn
 from imageio import imread
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.metrics.pairwise import euclidean_distances
@@ -8,9 +9,65 @@ from sklearn.model_selection import cross_validate, train_test_split
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.ensemble import RandomForestClassifier
+import graphviz
+import imageio
+from sklearn.metrics import euclidean_distances
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import euclidean_distances
+from sklearn.neighbors import KNeighborsClassifier
 
+# adapted from mglearn https://github.com/amueller/mglearn/blob/master/mglearn/tools.py
+def my_heatmap(values, xlabel, ylabel, xticklabels, yticklabels, cmap=None,
+            vmin=None, vmax=None, ax=None, fmt="%0.2f"):
+    if ax is None:
+        ax = plt.gca()
+    # plot the mean cross-validation scores
+    img = ax.pcolor(values, cmap=cmap, vmin=vmin, vmax=vmax)
+    img.update_scalarmappable()
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_xticks(np.arange(len(xticklabels)) + .5)
+    ax.set_yticks(np.arange(len(yticklabels)) + .5)
+    ax.set_xticklabels(xticklabels)
+    ax.set_yticklabels(yticklabels)
+    ax.set_aspect(1)
+
+    
+    iteration = 0
+    for p, color, value in zip(img.get_paths(), img.get_facecolors(),
+                               img.get_array().flatten()):
+        x, y = p.vertices[:-2, :].mean(0)
+        if np.mean(color[:3]) > 0.5:
+            c = 'k'
+        else:
+            c = 'w'        
+        ax.text(x, y, fmt % value, color=c, ha="center", va="center")
+    return img
+
+
+def plot_loss_diagram(labels_inside=False): # From Mike's notebook: https://github.com/UBC-CS/cpsc340-2020w2/blob/main/lectures/19_linear-classifiers-fit.ipynb        
+    grid = np.linspace(-2,2,1000)
+    plt.figure(figsize=(6, 4), dpi=80)
+    plt.xlabel('$y_iw^T x_i$', fontsize=18)
+    plt.ylabel('$f_i(w)$', fontsize=18)
+    plt.xlim(-2,2)
+    plt.ylim(-0.025,3)
+    plt.fill_between([0, 2], -1, 3, facecolor='blue', alpha=0.2);
+    plt.fill_between([-2, 0], -1, 3, facecolor='red', alpha=0.2);
+    plt.yticks([0,1,2,3]);
+
+    if labels_inside:
+        plt.text(-1.95, 2.73, "incorrect prediction", fontsize=15) # 2.68
+        plt.text(0.15, 2.73, "correct prediction", fontsize=15)
+    else:
+        plt.text(-1.95, 3.1, "incorrect prediction", fontsize=15) # 2.68
+        plt.text(0.15, 3.1, "correct prediction", fontsize=15)
+
+
+    plt.tight_layout()
+    
 def plot_tree_decision_boundary(
-    model, X, y, x_label="x-axis", y_label="y-axis", eps=None, ax=None, remove_feature_names=True, title=None
+    model, X, y, x_label="x-axis", y_label="y-axis", eps=None, ax=None, title=None
 ):
     if ax is None:
         ax = plt.gca()
@@ -18,10 +75,7 @@ def plot_tree_decision_boundary(
     if title is None:
         title = "max_depth=%d" % (model.tree_.max_depth)
 
-    if remove_feature_names and hasattr(model, 'feature_names_in_'):
-        delattr(model, 'feature_names_in_')  # delete names to avoid warning message
-
-    mglearn.plots.plot_2d_separator(
+    mglearn.plot_2d_separator(
         model, X.to_numpy(), eps=eps, fill=True, alpha=0.5, ax=ax
     )
     mglearn.discrete_scatter(X.iloc[:, 0], X.iloc[:, 1], y, ax=ax)
@@ -31,7 +85,7 @@ def plot_tree_decision_boundary(
 
 
 def plot_tree_decision_boundary_and_tree(
-    model, X, y, height=6, width=16, x_label="x-axis", y_label="y-axis", eps=None, remove_feature_names=True
+    model, X, y, height=6, width=16, fontsize = 9, x_label="x-axis", y_label="y-axis", eps=None
 ):
     fig, ax = plt.subplots(
         1,
@@ -40,14 +94,16 @@ def plot_tree_decision_boundary_and_tree(
         subplot_kw={"xticks": (), "yticks": ()},
         gridspec_kw={"width_ratios": [1.5, 2]},
     )
-    plot_tree_decision_boundary(model, X, y, x_label, y_label, eps, ax[0], remove_feature_names)
-    ax[1].imshow(tree_image(X.columns, model))
+    plot_tree_decision_boundary(model, X, y, x_label, y_label, eps, ax=ax[0])
+    custom_plot_tree(model, 
+                 feature_names=X.columns.tolist(), 
+                 class_names=['A+', 'not A+'],
+                 impurity=False,
+                 fontsize=fontsize, ax=ax[1])
     ax[1].set_axis_off()
     plt.show()
     
 def plot_fruit_tree(ax=None):
-    import graphviz
-
     if ax is None:
         ax = plt.gca()
     mygraph = graphviz.Digraph(
@@ -67,9 +123,8 @@ def plot_fruit_tree(ax=None):
     mygraph.edge("2", "5", label="True")
     mygraph.edge("2", "6", label="False")
     mygraph.render("tmp")
-    ax.imshow(imread("tmp.png"))
-    ax.set_axis_off()    
-    
+    ax.imshow(imageio.v2.imread("tmp.png"))
+    ax.set_axis_off()        
 
 def plot_knn_clf(X_train, y_train, X_test, n_neighbors=1, class_names=['class 0','class 1'], test_format='star'):
     # credit: This function is based on: https://github.com/amueller/mglearn/blob/master/mglearn/plot_knn_classification.py
@@ -101,7 +156,7 @@ def plot_knn_decision_boundaries(X_train, y_train, k_values = [1,11,100]):
         mean_valid_score = scores["test_score"].mean()
         mean_train_score = scores["train_score"].mean()
         clf.fit(X_train, y_train)
-        mglearn.plots.plot_2d_separator(
+        mglearn.plot_2d_separator(
             clf, X_train.to_numpy(), fill=True, eps=0.5, ax=ax, alpha=0.4
         )
         mglearn.discrete_scatter(X_train.iloc[:, 0], X_train.iloc[:, 1], y_train, ax=ax)
@@ -112,6 +167,54 @@ def plot_knn_decision_boundaries(X_train, y_train, k_values = [1,11,100]):
         ax.set_xlabel("longitude")
         ax.set_ylabel("latitude")
     axes[0].legend(loc=1);    
+
+    
+def plot_knn_classification(n_neighbors=1):
+    X, y = make_forge()
+
+    X_test = np.array([[8.2, 3.66214339], [9.9, 3.2], [11.2, .5]])
+    dist = euclidean_distances(X, X_test)
+    closest = np.argsort(dist, axis=0)
+
+    for x, neighbors in zip(X_test, closest.T):
+        for neighbor in neighbors[:n_neighbors]:
+            plt.arrow(x[0], x[1], X[neighbor, 0] - x[0],
+                      X[neighbor, 1] - x[1], head_width=0, fc='k', ec='k')
+
+    clf = KNeighborsClassifier(n_neighbors=n_neighbors).fit(X, y)
+    test_points = discrete_scatter(X_test[:, 0], X_test[:, 1], clf.predict(X_test), markers="*")
+    training_points = discrete_scatter(X[:, 0], X[:, 1], y)
+    plt.legend(training_points + test_points, ["training class 0", "training class 1",
+                                               "test pred 0", "test pred 1"])
+    
+def plot_knn_regression(n_neighbors=1):
+    X, y = make_wave(n_samples=40)
+    X_test = np.array([[-1.5], [0.9], [1.5]])
+
+    dist = euclidean_distances(X, X_test)
+    closest = np.argsort(dist, axis=0)
+
+    plt.figure(figsize=(10, 6))
+
+    reg = KNeighborsRegressor(n_neighbors=n_neighbors).fit(X, y)
+    y_pred = reg.predict(X_test)
+
+    for x, y_, neighbors in zip(X_test, y_pred, closest.T):
+        for neighbor in neighbors[:n_neighbors]:
+                plt.arrow(x[0], y_, X[neighbor, 0] - x[0], y[neighbor] - y_,
+                          head_width=0, fc='k', ec='k')
+
+    train, = plt.plot(X, y, 'o', c=cm3(0))
+    test, = plt.plot(X_test, -3 * np.ones(len(X_test)), '*', c=cm3(2),
+                     markersize=20)
+    pred, = plt.plot(X_test, y_pred, '*', c=cm3(0), markersize=20)
+    plt.vlines(X_test, -3.1, 3.1, linestyle="--")
+    plt.legend([train, test, pred],
+               ["training data/target", "test data", "test prediction"],
+               ncol=3, loc=(.1, 1.025))
+    plt.ylim(-3.1, 3.1)
+    plt.xlabel("Feature")
+    plt.ylabel("Target")    
 
 def plot_train_test_points(X_train, y_train, X_test, class_names=['class 0','class 1'], test_format='star'):
     training_points = mglearn.discrete_scatter(X_train[:, 0], X_train[:, 1], y_train)
@@ -130,7 +233,7 @@ def plot_train_test_points(X_train, y_train, X_test, class_names=['class 0','cla
     
 
 def plot_support_vectors(svm, X, y):
-    mglearn.plots.plot_2d_separator(svm, X, eps=.5)
+    mglearn.plot_2d_separator(svm, X, eps=.5)
     mglearn.discrete_scatter(X[:, 0], X[:, 1], y)
     sv = svm.support_vectors_ # plot support vectors
     # class labels of support vectors are given by the sign of the dual coefficients
@@ -149,7 +252,7 @@ def plot_svc_gamma(param_grid, X_train, y_train, x_label="longitude", y_label='l
         mean_valid_score = scores["test_score"].mean()
         mean_train_score = scores["train_score"].mean()
         clf.fit(X_train, y_train)
-        mglearn.plots.plot_2d_separator(
+        mglearn.plot_2d_separator(
             clf, X_train, fill=True, eps=0.5, ax=ax, alpha=0.4
         )
         mglearn.discrete_scatter(X_train[:, 0], X_train[:, 1], y_train, ax=ax)
@@ -169,7 +272,7 @@ def plot_svc_C(param_grid, X_train, y_train, x_label="longitude", y_label='latit
         mean_valid_score = scores["test_score"].mean()
         mean_train_score = scores["train_score"].mean()
         clf.fit(X_train, y_train)
-        mglearn.plots.plot_2d_separator(
+        mglearn.plot_2d_separator(
             clf, X_train, fill=True, eps=0.5, ax=ax, alpha=0.4
         )
         mglearn.discrete_scatter(X_train[:, 0], X_train[:, 1], y_train, ax=ax)
@@ -330,7 +433,7 @@ def plot_confusion_matrix_ex(tn, fp, fn, tp, target='Fraud'):
     plt.text(.90, .7, confusion[0, 1], size=45, horizontalalignment='right')
     plt.text(.90, 0.2, confusion[1, 1], size=45, horizontalalignment='right')
     plt.xticks([.25, .75], ["predicted not " + target, "predicted " + target], size=20, rotation=25)
-    plt.yticks([.25, .75], ["actual " + target, "actual not " + target ], size=20)
+    plt.yticks([.25, .75], ["true " + target, "true not " + target ], size=20)
     plt.plot([.5, .5], [0, 1], '--', c='k')
     plt.plot([0, 1], [.5, .5], '--', c='k')
 
@@ -342,7 +445,7 @@ def plot_confusion_matrix_example(tn, fp, fn, tp, target='Fraud'):
     fig, ax = plt.subplots(1, 2, figsize=(20, 6), subplot_kw={'xticks': (), 'yticks': ()})
 
     plt.setp(ax, xticks=[.25, .75], xticklabels=["predicted not " + target, "predicted " + target],
-       yticks=[.25, .75], yticklabels=["actual " + target, "actual not " + target ])    
+       yticks=[.25, .75], yticklabels=["true " + target, "true not " + target ])    
     confusion = np.array([[tn, fp], [fn, tp]])
     ax[0].text(0.40, .7, confusion[0, 0], size=45, horizontalalignment='right')
     ax[0].text(0.40, .2, confusion[1, 0], size=45, horizontalalignment='right')
@@ -404,4 +507,29 @@ def make_num_tree_plot(preprocessor, X_train, y_train, X_test, y_test, num_trees
     plt.xlabel("number of trees")
     plt.ylabel("scores") 
 
+#[Code credit](https://learning.oreilly.com/library/view/introduction-to-machine/9781449369880/ch02.html#linear-models)
+def plot_multiclass_lr_ovr(lr, X_train, y_train, n_classes, test_points=None, decision_boundary=False):    
+    mglearn.discrete_scatter(X_train[:, 0], X_train[:, 1], y_train)
+    line = np.linspace(-15, 15)
+    colors = ['b','r','g','c', 'm','y', 'bisque', 'olivedrab']
+    for coef, intercept, color in zip(lr.coef_, lr.intercept_, colors[:n_classes]):
+        plt.plot(line, -(line * coef[0] + intercept) / coef[1], c=color)
+    plt.ylim(-10, 15)
+    plt.xlim(-10, 8)
+    plt.xlabel("Feature 0")
+    plt.ylabel("Feature 1")
+    legend_labels = []
+    for cl in range(n_classes):
+        legend_labels.append("Class " + str(cl))
+    for cl in range(n_classes):
+        legend_labels.append("Line class " + str(cl))
+    plt.legend(
+        legend_labels,
+        loc=(1.01, 0.3),
+    );
+    if test_points:
+        for test_point in test_points: 
+            plt.plot(test_point[0], test_point[1], "k*", markersize=16)
+    if decision_boundary:
+        mglearn.plot_2d_classification(lr, X_train, fill=True, alpha=0.7)
         
