@@ -1,13 +1,13 @@
 # Homework info & submission guidelines
 
-You will be submitting your homework assignments on [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/6697).
+You will be submitting your homework assignments on [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/7786).
 
 ## Accessing homework assignments
-Every homework assignment will be made available on the [course GitHub page](https://github.com/UBC-CS/cpsc330-2022W2) under the `hw` folder. Once it's available, I'll make an announcement on [Piazza](https://piazza.com/class/lcgo6c2ncl06el). The assignment will generally consist of a jupyter notebook along with necessary code and data or links to download the data.    
+Every homework assignment will be made available on the [course GitHub page](https://github.com/UBC-CS/cpsc330-2024s) under the `hw` folder. Once it's available, I'll make an announcement on [Piazza](https://piazza.com/class/lvo65lmwh53527). The assignment will generally consist of a jupyter notebook along with necessary code and data or links to download the data.    
 
 ## How to submit
 
-We anticipate that you will do `git pull` in your local course repository when the homework is made released. You may work on your homework locally or in a private GitHub repository, which provides you with a backup, version control for your work, a way to collaborate with others, to show unfinished work to instructors and ask for help, etc. To submit your homework you must **submit your final version of the notebook to [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/6697)** where it will be graded. 
+We anticipate that you will do `git pull` in your local course repository when the homework is made released. You may work on your homework locally or in a private GitHub repository, which provides you with a backup, version control for your work, a way to collaborate with others, to show unfinished work to instructors and ask for help, etc. To submit your homework you must **submit your final version of the notebook to [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/7786)** where it will be graded.
 
 Once you submit to PrairieLearn, you should go there and ensure your assignment is there as expected and all the output and plots are rendered properly. **It is your responsibility to make sure your assignment is submitted properly and failure to do so will result in a deduction of marks.**
 
@@ -39,12 +39,12 @@ In most assignments, you will be asked to produce plots/figures. When including 
 - Regardless of your image formats, all text must be big enough to read without straining or zooming. Please be careful about this for axis labels, legends, titles, etc. Avoid tiny text!
 
 ## Partners
-**You must work alone for Assignment 1.** For Assignment 2 onwards, I might consider allowing group submissions. (I'll update the instructions soon.) 
+**You must work alone for Assignment 1.** For Assignment 2 onwards, I might consider allowing group submissions. Group assignments provide an opportunity for you to engage in discussions with your classmates, enhancing your understanding of the course material. As a result, **_you must not divide the work among the group_**! That is, everyone in the group must be involved in coming up with a submitted solution, and they must understand all parts of the submitted work.
 
 ## Late submissions
 By default late submissions will not be accepted. The rationale is that we will be posting the solutions shortly after the assignment deadline, and we cannot accept submissions after the solutions are posted. I do not like this, but I believe the overall policy is best for the class as a whole.
 
-_In exceptional circumstances_ a late submission may be accepted with an academic concession - see [here](https://github.com/UBC-CS/cpsc330-2022W2/blob/main/docs/course_info.md#academic-concessions) for more info.
+_In exceptional circumstances_ a late submission may be accepted with an academic concession - see [here](https://github.com/UBC-CS/cpsc330-2024s/blob/main/docs/syllabus.md#academic-concessions) for more info.
 
 ## Updates to assignments
 

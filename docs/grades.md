@@ -1,8 +1,7 @@
 # CPSC 330 grading policies
 
 ## General guidelines
-- **Assignment grading concerns**: All grading concerns and challenges related to assignments must be reported opening a regrade request on Gradescope.
-- Exam grading concerns: All grading concerns and challenges related to the midterm must be reported on Piazza by posting it to the instructors. You must select the `grading_concerns` folder when you post your message. If you do not do it, we might not see your message. Clearly state your name, student number, the assessment, and your concern.
+- For all **Assignment and Exam grading concerns** make a **private Piazza post** visible to `Instructors` only. This way your post will be visible to the entire teaching team, and the specific marker for your question will be able to respond to your post. Clearly mention the name of the assignment, your name and and most importantly your _**CWL**_, and explain your concern. Always, select the appropriate Piazza folder(s) (`hw1`, `grading`, etc.) for any post you make.
 
 ## Grading concerns: time limit
 If you perceive a problem with your homework or exam grade, you have **one week** to raise a concern from the time that your grades were posted. After that, your grade is final.

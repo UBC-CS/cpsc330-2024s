@@ -36,8 +36,8 @@ Software licensed under [the MIT License](https://spdx.org/licenses/MIT.html), n
 
 ## Important links
 
-* [Syllabus / administrative info](docs/course_info.md)
-* [Calendar](https://htmlpreview.github.io/?https://github.com/UBC-CS/cpsc330-2023s/blob/2023s/docs/calendar.html)
+* [Syllabus / administrative info](docs/syllabus.md)
+* [Calendar and due dates](https://github.com/UBC-CS/cpsc330-2023s/tree/main?tab=readme-ov-file#deliverable-due-dates-tentative)
 * [Course GitHub page](https://github.com/UBC-CS/cpsc330-2023s)
 * [Course Jupyter book](https://ubc-cs.github.io/cpsc330/lectures/01_intro.html#why-machine-learning-ml-video)
 * [Course videos YouTube channel](https://www.youtube.com/playlist?list=PLHofvQE1VlGtZoAULxcHb7lOsMved0CuM)
@@ -58,7 +58,7 @@ Software licensed under [the MIT License](https://spdx.org/licenses/MIT.html), n
 
 The following chart is a very compact version of the course tentative schedule.
 
-<img src="docs/img/cpsc330_2023s_tentative_schedule.png" alt="tentative schedule" width="500"/>
+<img src="docs/img/cpsc330_2024s_tentative_schedule.png" alt="tentative schedule" width="500"/>
 
 &nbsp;
 <br>

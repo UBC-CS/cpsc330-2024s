@@ -1,21 +1,25 @@
 # How to ask for help
 
-We will use [Piazza](https://piazza.com/class/lr4y28ceun367s) for general questions as well as your specific questions about grades. You can access the course's Piazza through the Canvas tab.
+We will use Piazza for general questions as well as your specific questions about grades and many other matters. You can access the course's Piazza through the Canvas tab.
 
-We require all students to use a @ubc.ca email to access Piazza. Accounts with other email addresses will be removed.
+We require all students to use a ubc.ca email to access Piazza. Accounts with other email addresses will be removed.
 
 Aside from all the standard UBC policies and guidelines, here are some additional points about how you're expected to use these platforms.
 
-
 ## General questions
 
-For general questions, use **Piazza** and post to **the entire class** so that other students benefit from the discussion.  
+For general questions, use **Piazza** and post to **the entire class** so that other students benefit from the discussion.
+
 
 ## Specific questions 
-- For questions involving your specific implementation of a homework question either use tutorials or office hours or post on **Piazza** to the instructors only. Before posting your specific question, think about whether other people in the class are likely to benefit from your question or not. If yes, formulate your specific question as a general question and post it to the entire class.  
+- For questions involving your specific implementation of a homework question either use tutorials or office hours or make a **private Piazza post** visible to `Instructors` only. Before posting your specific question, think about whether other people in the class are likely to benefit from your question or not. If yes, formulate your specific question as a general question and post it to the entire class.
 - Include a link to the file you want us to review, and a brief explanation.
   - If you want to be extra fancy, you can include a link to the specific line by appending a code like `#L123` to the end of the URL (this would link to line 123). You can also link to a range of lines, like `#L9-L17` to highlight lines 9-17. See, for example, [this link](https://github.com/mgelbart/rhomboid/blob/master/src/run_tests.py#L9-L17).
   
+
+## Grading-related questions
+- For questions about your grades or regrading requests, make a **private Piazza post** visible to `Instructors` only. This way your post will be visible to the entire teaching team, and the specific marker for your question will be able to respond to your post. Clearly mention the name of the assignment, your name and and most importantly your _**CWL**_, and explain your concern. Always, select the appropriate Piazza folder(s) (`hw1`, `grading`, etc.) for any post you make.
+
 
 ## Piazza-specific Q&A guidelines
 
@@ -39,7 +43,3 @@ When you post questions on Piazza:
       - Include the entire error traceback, or at the very least the part showing the line number and error message.  
 - If you post a question and then figure out the answer yourself, please do not delete the question. **It's still useful. Ideally, you'd post the answer to your own question for others to benefit.**     
 - When using equations, write them in LaTeX syntax and surround them with two dollar-signs. For example `$$2^x$$` will render nicely in Piazza.
-
-## Grading-related questions  
-- For questions about your grade, please contact Michelle, CPSC 330 Course Coordinator at cpsc330-admin@cs.ubc.ca and she will review and connect you with the TA responsible for your grade. Clearly mention the name of the assignment, your name and student number, and explain your concern.   
-
