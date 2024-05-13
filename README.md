@@ -93,7 +93,7 @@ The following sections provide for more detailed course schedule.
 - You are expected to attend the lectures.
 - You will find the lecture notes under the [lectures](./lectures/mehrdad) in this repository. Lectures will be posted/updated as they become available.
 
-| [Lectures](./lectures/mehrdad) | Date  | Topic | Assigned videos | vs. CPSC 340 |
+| Lectures | Date  | Topic | Assigned videos | vs. CPSC 340 |
 |:-:|-|-|-|-|
 |01 | May 13 | Course intro | 📹 <li>Pre-watch: None</li><li>Recap video (after lecture): [1.0](https://youtu.be/-1hTcS5ZE4w)</li> | n/a|
 |  | | **Part I: ML fundamentals and preprocessing**  |
