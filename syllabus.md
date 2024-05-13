@@ -1,7 +1,11 @@
 # Syllabus
 
-- [UBC course URL: 911](https://www.cs.ubc.ca/course-section/cpsc-330-911-2023s)
-- [UBC course URL: 912](https://www.cs.ubc.ca/course-section/cpsc-330-912-2023s)
+## Course Links
+||||
+|-|-|-|
+| Section 911: | [SSC](https://courses.students.ubc.ca/cs/courseschedule?sessyr=2024&sesscd=S&pname=subjarea&tname=subj-section&dept=CPSC&course=330&section=911) | [CS](https://www.cs.ubc.ca/course-section/cpsc-330-911-2024s) |
+| Section 912: | [SSC](https://courses.students.ubc.ca/cs/courseschedule?sessyr=2024&sesscd=S&pname=subjarea&tname=subj-section&dept=CPSC&course=330&section=912) | [CS](https://www.cs.ubc.ca/course-section/cpsc-330-912-2024s) |
+
 
 ## Course description
 
@@ -12,44 +16,52 @@ Application of machine learning tools, with an emphasis on solving practical pro
 
 **Lectures**:
 
-| Section | Day  | Lecture | Office Hour | Location |
-|-|-|-|-|-|
-| 911 | Tue, Thu  | 13:30 - 17:00 | 17:00 - 18:00 | [FSC 1005](https://ssc.adm.ubc.ca/classroomservices/function/viewlocation?userEvent=ShowLocation&buildingID=FSC&roomID=1005) |
-| 912 | Wed, Fri  | 13:30 - 17:00 | 17:00 - 18:00 | [DMP 110](https://ssc.adm.ubc.ca/classroomservices/function/viewlocation?userEvent=ShowLocation&buildingID=DMP&roomID=110) |
+| Section | Location | Day  | Lecture | Office Hour | OH Held By |
+|:-:|-|-|-|-|-|
+| 911 | [DMP 310](https://ssc.adm.ubc.ca/classroomservices/function/viewlocation?userEvent=ShowLocation&buildingID=DMP&roomID=310) | Mon, Wed, Fri | 10:00 - 13:00 | 13:00 - 14:00 | TAs |
+| 912 | [MCLD 2018](https://ssc.adm.ubc.ca/classroomservices/function/viewlocation?userEvent=ShowLocation&buildingID=MCLD&roomID=2018) | Mon, Wed, Fri | 14:00 - 17:00 | 17:00 - 18:00 | TAs and Instructor |
 
 
-**Tutorials and office hours**:
-For tutorial and office hours time and locations check the [Calendar](https://github.com/UBC-CS/cpsc330-2024s/tree/main?tab=readme-ov-file#deliverable-due-dates-tentative). The tutorials for this class will be run by the TAs and will be in office hours format. The tutorials are **optional**. That said, you will have more one-on-one time with the TAs and you are likely learn more about machine learning in general if take advantage of this.
+**Post-lecture office hours (OH)** will held right after each class in the same classroom.  As shown in the table above:
+- TAs will be present during all OH.
+- The instructor will be also be there ([MCLD 2018](https://ssc.adm.ubc.ca/classroomservices/function/viewlocation?userEvent=ShowLocation&buildingID=MCLD&roomID=2018)) during 17:00 to 18:00 OH for as long as there are student questions (so potentially a total of three hours per week of instructor OH).
 
-**Post-lecture office hours**:
-Both the instructor and TA(s) will be present during the post-lecture office hours (which are after each class in the same classroom). During the post-lecture office hours:
-- For conceptual questions regarding materials covered in lectures, talk to the instructor.
-- For questions regarding assignments or technical issues, talk to the TA(s).
+ _Guidelines for asking questions_:
+- Talk to the **instructor** for **conceptual** questions regarding materials covered in lectures.
+- Talk to the **TAs** for both **conceptual** questions and questions regarding **assignments** or **technical** issues.
+
+**Tutorials** for this class will be run by the TAs and will be in office hours format. The tutorials are **optional**. That said, you will have more one-on-one time with the TAs and you are likely to learn more about machine learning in general if you take advantage of this.
+
+- TA tutorials and office hours will be hybrid: provided both in-person and on Zoom
+  - See [the SSC Course link](https://courses.students.ubc.ca/cs/courseschedule?tname=subj-course&dept=CPSC&course=330&sessyr=2024&sesscd=S) for in-person locations
+  - Use [this TA Zoom link](https://ubc.zoom.us/j/61991264130?pwd=cTZSWkhUSUMrSHNZRVI1N3RrNnVsQT09) for online option
+- Precedence in answering questions:
+  - **First**, students who are present **in person** will have precedence over those attending remotely.
+  - **Second**, students **officially registered** in the tutorial section have precedence over students from other tutorial sections. This means you are allowed to go to tutorial sections other than the one you are registered in, but you will have lower precedence if you do so.
 
 ## Teaching Team
 
 **Instructor**: Mehrdad Oveisi (moveisi@cs.ubc.ca)
 
-**Course Coordinator**: Jeffrey Ho (cpsc330-admin@cs.ubc.ca)
+**Course Coordinator**: Liam Salt (cpsc330-admin@cs.ubc.ca)
 
 **Teaching Assistants**:
-- Aninta, Sambina
-- Chockkalingam, Shruthi
-- DeMarco, Michael
-- GARG, ANUBHAV
-- Gholami, Peyman
-- Gonzalez Pizarro, Felipe
-- Liu, Chen
-- Lou, Martin
-- Rideout, Colleen
-- Thoma, Ethan
-- Wei, Ming Chun
-- Yang, Yilin
-- Yeryomenko, Yegor
-- Zaleski, Grayden
-- Zarei, Mahsa
-- Zhu, Weiya
-- Zung, Lauren
+- Daniel Lee (djlee256@student.ubc.ca)
+- Ehsan Soltan Aghai (esoltan@cs.ubc.ca)
+- Jenny Chung (jchung16@student.ubc.ca)
+- Jialin Lu (jialinlu@student.ubc.ca)
+- Justice Sefas (jsefas@cs.ubc.ca)
+- Ka-Him Ngan (kmdicksn@student.ubc.ca)
+- Mahsa Zarei (mzarei@chem.ubc.ca)
+- Martin Lou (runkai02@student.ubc.ca)
+- Mishaal Kazmi (mkazmi@cs.ubc.ca)
+- Shadab Shaikh (shadabs3@cs.ubc.ca)
+- Shashwat Suri (suris@student.ubc.ca)
+- Shruthi Chockkalingam (shruthic@cs.ubc.ca)
+- Tianyu Duan (dty200@student.ubc.ca)
+- Yan Zeng (yzeng11@students.cs.ubc.ca)
+- Zhuozhuo Liu (zhuozhuo@student.ubc.ca)
+
 
 ## Registration
 
@@ -64,30 +76,36 @@ In practice, the prerequisite is familiarity with Python programming.
 **Auditing**: If the course is full, we cannot accommodate official auditors. If there is space and you would like to audit the course, please contact the instructor. All UBC students are welcome to audit the course unofficially. 
 
 ## Grading scheme
- 
+
 The grading scheme for the course is as follows:
 
-| Component   | Weight          | Location   |
-|-------------|-----------------|------------|
-| Syllabus quiz |   1%          | [Canvas](https://canvas.ubc.ca/courses/101888) | 
-| iClicker   |   2% | iClicker (TBA) |
-| Assignments |     20%         | [Gradescope](https://www.gradescope.ca/courses/5032) |
-| Midterm*   |     25%         | [Canvas](https://canvas.ubc.ca/courses/78046)     |
-| Final*     |     52%         | [Canvas](https://canvas.ubc.ca/courses/78046)     |
+| Component     | Weight | Location |
+|-|-|-|
+| Syllabus quiz |     1% | [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/7786) |
+| iClicker      |     2% | [Section 911](https://join.iclicker.com/JISI), [Section 912](https://join.iclicker.com/VHDJ) |
+| Assignments   |    20% | [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/7786) |
+| Midterm*      |    27% | [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/7786) |
+| Final*        |    50% | [PrairieLearn](https://ca.prairielearn.com/pl/course_instance/7786) |
 
-*In order to pass the course, you must pass at least one of: (1) the final exam, or (2) a weighted average of the midterm and final exam.
+*In order to **pass the course**, you must pass at least one of: (1) the final exam, or (2) a weighted average of the midterm and final exam.
 
 ### iClicker
-Here are a few points regarding iClicker:
-- 1% participation, 1% correctness
-- Exemptions will not be granted for missed iClickers under any circumstances. 
+The following are a few points regarding iClicker:
+- The iClicker participation grade will mainly consider your engagement rather than the accuracy of your responses. Nevertheless, these questions are intended to facilitate your learning, so please make an earnest effort when providing your answers.
+- Exemptions will not be granted for missed iClickers under any circumstances.
 - You may fully discuss any and all iClicker questions in class with your classmates, with no restrictions.  However, you may not submit iClicker answers on behalf of your neighbors under any circumstances.
+- You may attend either of sections 911 or 912 and gain iCLicker points. However, if you attend both sections for a particular lecture, then, for that lecture, you get the marks for the section you are registered in.
+- To register for iClicker, use the corresponding link for [Section 911](https://join.iclicker.com/JISI) and [Section 912](https://join.iclicker.com/VHDJ).
+  - You must make sure your information on iClicker is correct. Having the wrong student ID may result in losing your grade on iClicker.
+
 
 ### Assignments
 
-The plan is that most of the assignments will contribute equally towards the overall Assignments grade. However, this is not finalized yet. For example, the last assignment ends up particularly short or long due to timing. Furthermore, I will drop your lowest homework grade. **By default, late submissions will not be accepted.** The rationale is that we will be posting the solutions shortly after the assignment deadline, and we cannot accept submissions after the solutions are posted. I do not like this, but I believe the overall policy is best for the class as a whole. See [this document](homework_instructions.md) for more detailed instructions on submitting homework assignments. 
+The plan is that most of the assignments will contribute equally towards the overall Assignments grade. However, this is not finalized yet. For example, the last assignment ends up particularly short or long due to timing. 
 
-For the full policy on grades, see [this document](grades.md). I understand that grades are important for you for several reasons. But try not to focus too much on them. You will have a better learning experience and in general, you'll be happier in life if you focus more on learning the material well. For the grading scheme I wish we could use [this](https://youtu.be/HdHlfiOAJyE?t=3771).
+**By default, late submissions will not be accepted**, and no extensions are granted. Instead, I will drop your lowest homework grade. The rationale is that we will be posting the solutions shortly after the assignment deadline, and we cannot accept submissions after the solutions are posted. I do not like this, but I believe the overall policy is best for the class as a whole. See [this document](docs/homework_instructions.md) for more detailed instructions on submitting homework assignments. 
+
+For the full policy on grades, see [this document](docs/grades.md). I understand that grades are important for you for several reasons. But try not to focus too much on them. You will have a better learning experience and in general, you'll be happier in life if you focus more on learning the material well. For the grading scheme I wish we could use [this](https://youtu.be/HdHlfiOAJyE?t=3771).
 
 
 ### Midterm
@@ -100,7 +118,7 @@ Check the [Calendar](https://github.com/UBC-CS/cpsc330-2024s/tree/main?tab=readm
 
 The final exam will be held during the exam period. More details about the midterm will be announced on Piazza closer to the exam time.
 
-Both midterm and final exams will be in-person but online with a BYOD (bring your own device) policy.
+Both **_midterm_** and **_final_** exams will be in-person but online with a **_BYOD (bring your own device)_** policy.
 
 ## Academic concessions
 
