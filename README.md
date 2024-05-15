@@ -75,14 +75,16 @@ The following sections provide for more detailed course schedule.
 | hw1 | May 18, 23:00 |  [Github repo](https://github.com/UBC-CS/cpsc330-2024s/tree/main/hw/) | PrairieLearn |
 | hw2 | May 21, 23:00 |   Github repo | PrairieLearn |
 | hw3 | May 25, 23:00 |   Github repo | PrairieLearn |
-| hw4 | May 29, 23:00 |   Github repo | PrairieLearn |
-| **Midterm** | **[TBA]** **_Perhaps_** between<br> **_May 30_** to **_June 4_**<br> in _afternoon_ or _evening_ | PrairieLearn | PrairieLearn (in-person) |
+| hw4 | May 30, 23:00 |   Github repo | PrairieLearn |
+| **Midterm** | **_June 4_, 18:00**<br>Details on Piazza | [PrairieTest](https://ca.prairietest.com) | PrairieTest (in-person) |
 | hw5 | June 06, 23:00 |   Github repo | PrairieLearn |
 | hw6 | June 11, 23:00 |   Github repo | PrairieLearn |
 | hw7 | June 15, 23:00 |   Github repo | PrairieLearn |
 | hw8 | June 20, 23:00 |   Github repo | PrairieLearn |
-| **Final exam** | **[TBA]**<br>[Final exam schedule](https://students.ubc.ca/enrolment/exams/exam-schedule) | PrairieLearn | PrairieLearn (in-person) |
+| **Final exam** | **[TBA]**<br>[Final exam schedule](https://students.ubc.ca/enrolment/exams/exam-schedule) | PrairieTest | PrairieTest (in-person) |
+| **Final exam _viewing_** | **[TBA]** Perhaps before July 12 |   [CBTF](https://cbtf.ubc.ca/) | In-person only (online not possible) |
 
+<br>
 
 ## Lecture schedule (tentative)
 
