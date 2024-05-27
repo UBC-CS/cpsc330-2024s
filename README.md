@@ -77,7 +77,7 @@ The following sections provide for more detailed course schedule.
 | hw3 | May 25, 23:00 |   Github repo | PrairieLearn |
 | hw4 | May 30, 23:00 |   Github repo | PrairieLearn |
 | **Midterm** | **_June 4_, 18:00**<br>Details on Piazza | [PrairieTest](https://ca.prairietest.com) | PrairieTest (in-person) |
-| hw5 | June 06, 23:00 |   Github repo | PrairieLearn |
+| hw5 | June 08, 23:00 |   Github repo | PrairieLearn |
 | hw6 | June 11, 23:00 |   Github repo | PrairieLearn |
 | hw7 | June 15, 23:00 |   Github repo | PrairieLearn |
 | hw8 | June 20, 23:00 |   Github repo | PrairieLearn |
